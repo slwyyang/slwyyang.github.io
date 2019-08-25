@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+    <script>
+        let sock = io.connect('ws://localhost:8080/')
+        window.onload=function(){
+            let oTxt = document.getElementById('txt1');
+            let oBtn = document.getElementById('btn1');
+            let oUl = document.getElementById('ul1');
+            oBtn.onclick=function(){
+                
+                sock.emit('msg',oTxt.value,2,3)
+            }
+            sock.on('connect',function(){
+                console.log('已连接');
+                
+            })
+            sock.on('disconnect',function(){
+                console.log('已断开');
+                
+            })
+
+            sock.once('msg',(...args)=>{
+                console.log(args,...args,'once');
+                
+                let oLi = document.createElement('li')
+                oLi.innerHTML=args[0]
+                oUl.appendChild(oLi)
+            })
+            sock.on('msg',(...args)=>{
+                console.log(args,...args,'on');
+                
+                let oLi = document.createElement('li')
+                oLi.innerHTML=args[0]
+                oUl.appendChild(oLi)
+            })
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1"></ul>
+    <textarea name=""  cols="60" rows="4" id='txt1'></textarea>
+    <input type="button" value="" id= 'btn1'>
+
+
+
+
+
+</body>
+</html>
