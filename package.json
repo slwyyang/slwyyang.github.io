@@ -1,0 +1,19 @@
+{
+  "name": "slwyyang.github.io",
+  "version": "1.0.0",
+  "description": "demo(引用百度搜索引擎，用li在页面显示)\r ```\r <!DOCTYPE html>\r <html lang=\"en\">\r <head>\r     <meta charset=\"UTF-8\">\r     <meta name=\"viewport\" content=\"width=sr, initial-scale=1.0\">\r     <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r     <title>Document</title>\r     <script>\r         function show(json) {\r             let oUL = document.getElementById('oul')\r             oUL.innerHTML=''\r             json.s.forEach(element => {\r                 let oli = document.createElement('li')\r                 oli.innerHTML=element\r                 oUL.appendChild(oli)\r             })\r         }\r         window.onload=function(){\r             let oTxt = document.getElementById('txt')\r             oTxt.oninput=function(){\r                 let oS = document.createElement('script')\r                 oS.src = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${oTxt.value}&cb=show`\r                 document.head.appendChild(oS)\r             }\r         }\r     </script>\r </head>\r <body>\r     <input type=\"text\" id='txt'>\r     <ul id=\"oul\"></ul>\r </body>\r </html>\r ```\r ### 缺点\r 现在jsonp越用越少，主要因其安全性问题，请求接口过于开放（完全开放），导致所有网站都能调用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slwyyang/slwyyang.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slwyyang/slwyyang.github.io/issues"
+  },
+  "homepage": "https://github.com/slwyyang/slwyyang.github.io#readme"
+}
